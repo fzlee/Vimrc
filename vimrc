@@ -10,7 +10,6 @@ Bundle 'Tagbar'
 Bundle 'gmarik/vundle'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'kevinw/pyflakes-vim'
-Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'Valloric/YouCompleteMe'
 
 
@@ -76,6 +75,7 @@ colorscheme molokai
 
 "keyboard binding 
 noremap <F1> <Esc>
+nmap <F2> :call CompileRunGcc()<cr>
 nmap <F5> :TagbarToggle<cr>
 nmap <F6> :NERDTreeToggle<cr>
 :command W w
@@ -107,10 +107,6 @@ let NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$',  '\~$']
 let NERDTreeShowBookmarks=1
 let NERDTreeWinPos = "right"
 
-"indent-guides'
-let g:indent_guides_enable_on_vim_startup = 1  " 默认关闭
-let g:indent_guides_guide_size            = 1  " 指定对齐线的尺寸
-let g:indent_guides_start_level 	  = 2  " 从第二层开始可视化显示缩进
 
 """""""""""""""""""""""""""""""""""""""
 "auto complete file head
@@ -154,4 +150,23 @@ func SetTitle()
                 call setline(10,"")  
         endif  
 endfunc
+
+func CompileRunGcc()
+    exec "w"
+    if &filetype == 'python'
+	exec "!python %"
+    elseif &filetype == 'c'
+        exec "!g++ % -o %<"
+        exec "! ./%<"
+    elseif &filetype == 'cpp'
+        exec "!g++ % -o %<"
+        exec "! ./%<"
+    elseif &filetype == 'java' 
+        exec "!javac %" 
+        exec "!java %<"
+    elseif &filetype == 'sh'
+        :!./%
+    endif
+endfunc
+
 
