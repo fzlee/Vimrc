@@ -1,7 +1,7 @@
 "Bundle setting
 set nocompatible
 filetype off
-set rtp+=~/.vim/bundle/vundle/
+set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#rc()
 
 "Bundle plugin installation"
@@ -64,14 +64,14 @@ set autoindent
 set smartindent     
 
 "code highlight customize
-let g:rehash256 = 1
-colorscheme molokai
+"let g:rehash256 = 1
+"colorscheme molokai
 
-"let g:solarized_termcolors=256
+let g:solarized_termcolors=256
 "set background=dark
 "colorscheme solarized
-"set background=light
-"colorscheme solarized
+set background=light
+colorscheme solarized
 
 "keyboard binding 
 noremap <F1> <Esc>
