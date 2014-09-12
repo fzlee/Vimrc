@@ -62,15 +62,17 @@ set matchpairs+=<:>                                               " specially fo
 set showmode                                                      " show mode in status bar (insert/replace/...)
 set autoindent
 set smartindent     
+set tabstop=4
+set expandtab
 
 "code highlight customize
-let g:rehash256 = 1
-colorscheme molokai
+"let g:rehash256 = 1
+"colorscheme molokai
 
-"let g:solarized_termcolors=256
+let g:solarized_termcolors=256
 "set background=dark
-"colorscheme solarized
-"set background=light
+colorscheme solarized
+set background=light
 "colorscheme solarized
 
 "keyboard binding 
