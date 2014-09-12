@@ -1,7 +1,7 @@
 "Bundle setting
 set nocompatible
 filetype off
-set rtp+=~/.vim/bundle/vundle/
+set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#rc()
 
 "Bundle plugin installation"
@@ -71,9 +71,9 @@ set expandtab
 
 let g:solarized_termcolors=256
 "set background=dark
-colorscheme solarized
-set background=light
 "colorscheme solarized
+set background=light
+colorscheme solarized
 
 "keyboard binding 
 noremap <F1> <Esc>
