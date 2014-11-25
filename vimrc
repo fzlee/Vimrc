@@ -58,6 +58,8 @@ set matchtime=1                                                   " show matchin
 set matchpairs+=<:>                                               " specially for html
 set showmode                                                      " show mode in status bar (insert/replace/...)
 set tabstop=4
+set softtabstop=4
+set shiftwidth=4
 set expandtab
 set shiftwidth=4
 
@@ -113,7 +115,7 @@ let NERDTreeWinPos = "right"
 """""""""""""""""""""""""""""""""""""""
 "auto complete file head
 """""""""""""""""""""""""""""""""""""""
-autocmd BufNewFile *.py,*.cc,*.sh,*.java exec ":call SetTitle()"        
+autocmd BufNewFile *.py,*.cc,*.sh,*.java,*.c,*.cpp exec ":call SetTitle()"        
 "新建.py,.cc,.java,.sh,  
 ""定义函数SetTitle，自动插入文件头  
 func SetTitle()  
@@ -133,11 +135,10 @@ func SetTitle()
                 call setline(4, "\# Created Time : ".strftime("%Y/%m/%d %H:%M"))  
                 call setline(5, "")  
                 call setline(6, "\# File Name: ".expand("%"))  
-                call setline(7, "\# Description:")  
-                call setline(8, "")  
-                call setline(9, "if __name__==\"__main__\":")  
-                call setline(10, "    pass")  
-                call setline(11,"")  
+                call setline(7, "")  
+                call setline(8, "if __name__==\"__main__\":")  
+                call setline(9, "    pass")  
+                call setline(10,"")  
         endif  
         if &filetype == 'java'  
                 call setline(1, "//coding=utf8")  
@@ -151,6 +152,15 @@ func SetTitle()
                 call setline(9, " ************************************************************************/")  
                 call setline(10,"")  
         endif  
+        if &filetype == 'cpp'
+                call setline(1,"//Source:    ")
+                call setline(2,"//Author:    fzlee")
+                call setline(3,"//Date:      ".strftime("%Y/%m/%d %H:%M"))
+                call setline(4,"")
+                call setline(5,"#include<iostream>")
+                call setline(6,"using namespace std;")
+                call setline(7,"")
+        endif
 endfunc
 
 func CompileRunGcc()
@@ -158,11 +168,11 @@ func CompileRunGcc()
     if &filetype == 'python'
 	exec "!python %"
     elseif &filetype == 'c'
-        exec "!g++ % -o %<"
-        exec "! ./%<"
+        exec "!g++ % -o %<.out"
+        exec "! ./%<.out"
     elseif &filetype == 'cpp'
-        exec "!g++ % -o %<"
-        exec "! ./%<"
+        exec "!g++ % -o %<.out"
+        exec "! ./%<.out"
     elseif &filetype == 'java' 
         exec "!javac %" 
         exec "!java %<"
