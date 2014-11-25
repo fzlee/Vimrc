@@ -11,6 +11,7 @@ Bundle 'gmarik/vundle'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'kevinw/pyflakes-vim'
 Bundle 'Valloric/YouCompleteMe'
+Bundle 'klen/python-mode'
 
 
 " encoding dectection
@@ -41,10 +42,6 @@ autocmd BufReadPost *
     \         exe "normal g'\"" |
     \     endif |
     \ endif
-"set nofoldenable                                                 " disable folding
-set confirm                                                       " prompt when existing from an unsaved file
-set history=100
-set backspace=indent,eol,start                                    " More powerful backspacing
 
 " display settings
 set t_Co=256                                                      " Explicitly tell vim that the terminal has 256 colors "
@@ -60,11 +57,14 @@ set laststatus=2                                                  " use 2 lines 
 set matchtime=1                                                   " show matching bracket for 0.2 seconds
 set matchpairs+=<:>                                               " specially for html
 set showmode                                                      " show mode in status bar (insert/replace/...)
-set autoindent
-set smartindent     
 set tabstop=4
 set expandtab
+set shiftwidth=4
 
+"set nofoldenable                                                 " disable folding
+set confirm                                                       " prompt when existing from an unsaved file
+set history=100
+set backspace=indent,eol,start                                    " More powerful backspacing
 "code highlight customize
 "let g:rehash256 = 1
 "colorscheme molokai
