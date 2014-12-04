@@ -117,11 +117,21 @@ let g:pymode_syntax_space_errors = g:pymode_syntax_all
 
 " Don't autofold code
 let g:pymode_folding = 0
+
+
+
+"config for gunco
+let g:gundo_width = 40
+let g:gundo_preview_height = 40
+let g:gundo_right = 1
+
 "keyboard binding 
 noremap <F1> <Esc>
 nmap <F2> :call CompileRunGcc()<cr>
 nmap <F5> :TagbarToggle<cr>
 nmap <F6> :NERDTreeToggle<cr>
+nmap <F7> :PymodeLintAuto<cr>
+nmap <F8> :GundoToggle<CR>
 :command W w
 :command WQ wq
 :command Wq wq
