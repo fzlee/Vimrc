@@ -68,14 +68,14 @@ set confirm                                                       " prompt when 
 set history=100
 set backspace=indent,eol,start                                    " More powerful backspacing
 "code highlight customize
-"let g:rehash256 = 1
-"colorscheme molokai
+let g:rehash256 = 1
+colorscheme molokai
 
-let g:solarized_termcolors=256
+"let g:solarized_termcolors=256
 "set background=dark
 "colorscheme solarized
-set background=light
-colorscheme solarized
+"set background=light
+"colorscheme solarized
 
 
 " Python-mode
