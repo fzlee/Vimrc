@@ -9,15 +9,9 @@ Bundle  'gmarik/Vundle.vim'
 Bundle 'The-NERD-tree'
 Bundle 'Tagbar'
 Bundle 'Lokaltog/vim-powerline'
-"Bundle 'kevinw/pyflakes-vim'
-"Bundle 'Valloric/YouCompleteMe'
-"Bundle 'klen/python-mode'
 Bundle 'Townk/vim-autoclose'
-"pep8 style checker
-"Bundle 'nvie/vim-flake8'
-"Bundle 'tpope/vim-pathogen'
-"Bundle 'hynek/vim-python-pep8-indent'
 Bundle 'klen/python-mode'
+Bundle 'sjl/gundo.vim'
 
 " encoding dectection
 set fileencodings=utf-8,gb2312,gb18030,gbk,ucs-bom,cp936,latin1
