@@ -15,7 +15,7 @@ Bundle 'Lokaltog/vim-powerline'
 Bundle 'Townk/vim-autoclose'
 "pep8 style checker
 "Bundle 'nvie/vim-flake8'
-"Bundle 'tpope/vim-pathogen'
+Bundle 'tpope/vim-pathogen'
 "Bundle 'hynek/vim-python-pep8-indent'
 Bundle 'klen/python-mode'
 
