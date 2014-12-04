@@ -4,14 +4,15 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#rc()
 
+Bundle  'gmarik/Vundle.vim'
 "Bundle plugin installation"
 Bundle 'The-NERD-tree'
 Bundle 'Tagbar'
-Bundle 'gmarik/vundle'
 Bundle 'Lokaltog/vim-powerline'
-Bundle 'kevinw/pyflakes-vim'
-Bundle 'Valloric/YouCompleteMe'
+"Bundle 'kevinw/pyflakes-vim'
+"Bundle 'Valloric/YouCompleteMe'
 Bundle 'klen/python-mode'
+Bundle 'Townk/vim-autoclose'
 
 
 " encoding dectection
