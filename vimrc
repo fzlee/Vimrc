@@ -12,6 +12,7 @@ Bundle 'Lokaltog/vim-powerline'
 Bundle 'Townk/vim-autoclose'
 Bundle 'klen/python-mode'
 Bundle 'sjl/gundo.vim'
+Bundle 'Valloric/YouCompleteMe'
 
 " encoding dectection
 set fileencodings=utf-8,gb2312,gb18030,gbk,ucs-bom,cp936,latin1
@@ -78,6 +79,38 @@ colorscheme molokai
 
 
 " Python-mode
+"Enable all python highlights                          *'g:pymode_syntax_all'*
+let g:pymode_syntax_all = 1
+"Turn on pymode syntax                                        *'g:pymode_syntax'*
+let g:pymode_syntax = 1
+"Enable automatic virtualenv detection                     *'g:pymode_virtualenv'*
+let g:pymode_virtualenv = 1
+"Enable pymode folding                                       *'g:pymode_folding'*
+let g:pymode_folding = 0
+"Turns on the documentation script                               *'g:pymode_doc'*
+let g:pymode_doc = 0
+
+
+
+"Turn on code checking                                          *'g:pymode_lint'*
+let g:pymode_lint = 1
+"Check code on every save (if file has been modified)  *'g:pymode_lint_on_write'*
+let g:pymode_lint_on_write = 1
+"Show error message if cursor placed at the error line  *'g:pymode_lint_message'*
+let g:pymode_lint_message = 1
+"Default code checkers (you could set several)         *'g:pymode_lint_checkers'*
+let g:pymode_lint_checkers = ['pep8']
+"Setup max line length                       *'g:pymode_options_max_line_length'*
+let g:pymode_options_max_line_length = 79
+"Set PEP8 options                                  *'g:pymode_lint_options_pep8'*
+let g:pymode_lint_options_pep8 = ({'max_line_length': g:pymode_options_max_line_length})
+"Setup pymode |quickfix| window
+let g:pymode_quickfix_minheight = 4
+let g:pymode_quickfix_maxheight = 4
+
+"Turn off code completion support in the plugin       *'g:pymode_rope_completion'*
+let g:pymode_rope_completion = 0
+
 " Activate rope
 " Keys:
 " K             Show python docs
@@ -90,35 +123,7 @@ colorscheme molokai
 " ]]            Jump on next class or function (normal, visual, operator modes)
 " [M            Jump on previous class or method (normal, visual, operator modes)
 " ]M            Jump on next class or method (normal, visual, operator modes)
-let g:pymode_rope = 1
-
-" Documentation
-let g:pymode_doc = 1
-let g:pymode_doc_key = 'K'
-
-"Linting
-let g:pymode_lint = 1
-let g:pymode_lint_checker = "pyflakes,pep8"
-" Auto check on save
-let g:pymode_lint_write = 1
-
-" Support virtualenv
-let g:pymode_virtualenv = 1
-
-" Enable breakpoints plugin
-let g:pymode_breakpoint = 1
-let g:pymode_breakpoint_key = '<leader>b'
-
-" syntax highlighting
-let g:pymode_syntax = 1
-let g:pymode_syntax_all = 1
-let g:pymode_syntax_indent_errors = g:pymode_syntax_all
-let g:pymode_syntax_space_errors = g:pymode_syntax_all
-
-" Don't autofold code
-let g:pymode_folding = 0
-
-
+"let g:pymode_rope = 1
 
 "config for gunco
 let g:gundo_width = 40
