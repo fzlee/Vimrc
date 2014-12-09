@@ -9,7 +9,7 @@ Bundle  'gmarik/Vundle.vim'
 Bundle 'The-NERD-tree'
 Bundle 'Tagbar'
 Bundle 'Lokaltog/vim-powerline'
-Bundle 'Townk/vim-autoclose'
+"Bundle 'Townk/vim-autoclose'
 Bundle 'klen/python-mode'
 Bundle 'sjl/gundo.vim'
 Bundle 'Valloric/YouCompleteMe'
@@ -89,17 +89,16 @@ let g:pymode_virtualenv = 1
 let g:pymode_folding = 0
 "Turns on the documentation script                               *'g:pymode_doc'*
 let g:pymode_doc = 0
-
-
-
 "Turn on code checking                                          *'g:pymode_lint'*
 let g:pymode_lint = 1
 "Check code on every save (if file has been modified)  *'g:pymode_lint_on_write'*
-let g:pymode_lint_on_write = 1
+"let g:pymode_lint_on_write = 1
 "Show error message if cursor placed at the error line  *'g:pymode_lint_message'*
-let g:pymode_lint_message = 1
+"let g:pymode_lint_message = 1
+"Check code when editing (on the fly)                        *'g:pymode_lint_on_fly'*
+let g:pymode_lint_on_fly = 1
 "Default code checkers (you could set several)         *'g:pymode_lint_checkers'*
-let g:pymode_lint_checkers = ['pep8']
+let g:pymode_lint_checkers = ['pep8', 'pyflakes']
 "Setup max line length                       *'g:pymode_options_max_line_length'*
 let g:pymode_options_max_line_length = 79
 "Set PEP8 options                                  *'g:pymode_lint_options_pep8'*
@@ -108,6 +107,8 @@ let g:pymode_lint_options_pep8 = ({'max_line_length': g:pymode_options_max_line_
 let g:pymode_quickfix_minheight = 4
 let g:pymode_quickfix_maxheight = 4
 
+"Don't Place error |signs|                                             *'g:pymode_signs'*
+let g:pymode_lint_signs = 0
 "Turn off code completion support in the plugin       *'g:pymode_rope_completion'*
 let g:pymode_rope_completion = 0
 
@@ -185,13 +186,13 @@ func SetTitle()
         endif    
         if &filetype == 'python'  
                 call setline(1, "\#!/usr/bin/env python")  
-                call setline(2, "\#coding: utf-8")  
+                call setline(2, "\# coding: utf-8")  
                 call setline(3, "\# Author: fzlee")  
                 call setline(4, "\# Created Time : ".strftime("%Y/%m/%d %H:%M"))  
                 call setline(5, "")  
                 call setline(6, "\# File Name: ".expand("%"))  
                 call setline(7, "")  
-                call setline(8, "if __name__==\"__main__\":")  
+                call setline(8, "if __name__ == \"__main__\":")  
                 call setline(9, "    pass")  
                 call setline(10,"")  
         endif  
