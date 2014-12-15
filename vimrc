@@ -94,9 +94,11 @@ let g:pymode_lint = 1
 "Check code on every save (if file has been modified)  *'g:pymode_lint_on_write'*
 "let g:pymode_lint_on_write = 1
 "Show error message if cursor placed at the error line  *'g:pymode_lint_message'*
-"let g:pymode_lint_message = 1
+let g:pymode_lint_message = 1
 "Check code when editing (on the fly)                        *'g:pymode_lint_on_fly'*
-let g:pymode_lint_on_fly = 1
+"let g:pymode_lint_on_fly = 1
+"Check code on every save (every)                    *'g:pymode_lint_unmodified'*
+let g:pymode_lint_unmodified = 1
 "Default code checkers (you could set several)         *'g:pymode_lint_checkers'*
 let g:pymode_lint_checkers = ['pep8', 'pyflakes']
 "Setup max line length                       *'g:pymode_options_max_line_length'*
@@ -187,14 +189,14 @@ func SetTitle()
         if &filetype == 'python'  
                 call setline(1, "\#!/usr/bin/env python")  
                 call setline(2, "\# coding: utf-8")  
-                call setline(3, "\# Author: fzlee")  
-                call setline(4, "\# Created Time : ".strftime("%Y/%m/%d %H:%M"))  
-                call setline(5, "")  
-                call setline(6, "\# File Name: ".expand("%"))  
-                call setline(7, "")  
-                call setline(8, "if __name__ == \"__main__\":")  
-                call setline(9, "    pass")  
-                call setline(10,"")  
+                call setline(3, "\"\"\"")  
+                call setline(4, "    ".expand("%"))
+                call setline(5, "    ~~~~~~~~~~")
+                call setline(6, "")
+                call setline(7, "\"\"\"")  
+                call setline(8,"")  
+                call setline(9, "if __name__ == \"__main__\":")  
+                call setline(10, "    pass")  
         endif  
         if &filetype == 'java'  
                 call setline(1, "//coding=utf8")  
