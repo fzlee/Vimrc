@@ -13,6 +13,8 @@ Bundle 'Lokaltog/vim-powerline'
 Bundle 'klen/python-mode'
 Bundle 'sjl/gundo.vim'
 Bundle 'Valloric/YouCompleteMe'
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
 
 " encoding dectection
 set fileencodings=utf-8,gb2312,gb18030,gbk,ucs-bom,cp936,latin1
@@ -69,13 +71,13 @@ set history=100
 set backspace=indent,eol,start                                    " More powerful backspacing
 "code highlight customize
 let g:rehash256 = 1
-colorscheme molokai
+"colorscheme molokai
 
-"let g:solarized_termcolors=256
+let g:solarized_termcolors=256
 "set background=dark
 "colorscheme solarized
-"set background=light
-"colorscheme solarized
+set background=light
+colorscheme solarized
 
 
 " Python-mode
@@ -114,6 +116,8 @@ let g:pymode_lint_signs = 0
 "Turn off code completion support in the plugin       *'g:pymode_rope_completion'*
 let g:pymode_rope_completion = 0
 
+"Disable markdown folding
+let g:vim_markdown_folding_disabled=1
 " Activate rope
 " Keys:
 " K             Show python docs
