@@ -102,7 +102,7 @@ let g:pymode_lint_message = 1
 "Check code on every save (every)                    *'g:pymode_lint_unmodified'*
 let g:pymode_lint_unmodified = 1
 "Default code checkers (you could set several)         *'g:pymode_lint_checkers'*
-let g:pymode_lint_checkers = ['pep8', 'pyflakes']
+let g:pymode_lint_checkers = ['pylint', 'pep8', 'pyflakes']
 "Setup max line length                       *'g:pymode_options_max_line_length'*
 let g:pymode_options_max_line_length = 79
 "Set PEP8 options                                  *'g:pymode_lint_options_pep8'*
@@ -118,6 +118,8 @@ let g:pymode_rope_completion = 0
 
 "Disable markdown folding
 let g:vim_markdown_folding_disabled=1
+"Trim unused white spaces on save                   *'g:pymode_trim_whitespaces'*
+let g:pymode_trim_whitespaces = 1
 " Activate rope
 " Keys:
 " K             Show python docs
