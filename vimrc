@@ -102,7 +102,7 @@ let g:pymode_lint_message = 1
 "Check code on every save (every)                    *'g:pymode_lint_unmodified'*
 let g:pymode_lint_unmodified = 1
 "Default code checkers (you could set several)         *'g:pymode_lint_checkers'*
-let g:pymode_lint_checkers = ['pylint', 'pep8', 'pyflakes']
+let g:pymode_lint_checkers = ['pep8', 'pyflakes']
 "Setup max line length                       *'g:pymode_options_max_line_length'*
 let g:pymode_options_max_line_length = 79
 "Set PEP8 options                                  *'g:pymode_lint_options_pep8'*
