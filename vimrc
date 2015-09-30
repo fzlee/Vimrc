@@ -5,16 +5,17 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#rc()
 
 Bundle  'gmarik/Vundle.vim'
-"Bundle plugin installation"
 Bundle 'The-NERD-tree'
 Bundle 'Tagbar'
 Bundle 'Lokaltog/vim-powerline'
 "Bundle 'Townk/vim-autoclose'
 Bundle 'klen/python-mode'
 Bundle 'sjl/gundo.vim'
-Bundle 'Valloric/YouCompleteMe'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
+"for Vim 7.3.598+, use YouCompleteMe
+"Bundle 'Shougo/neocomplete.vim'
+Bundle 'Valloric/YouCompleteMe'
 
 " encoding dectection
 set fileencodings=utf-8,gb2312,gb18030,gbk,ucs-bom,cp936,latin1
