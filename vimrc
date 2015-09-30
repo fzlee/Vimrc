@@ -13,9 +13,9 @@ Bundle 'klen/python-mode'
 Bundle 'sjl/gundo.vim'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
-"for Vim 7.3.598+, use YouCompleteMe
-"Bundle 'Shougo/neocomplete.vim'
+"for Vim 7.3.598+, use YouCompleteMe, or you may choose jedi-vim
 Bundle 'Valloric/YouCompleteMe'
+"Bundle 'davidhalter/jedi-vim'
 
 " encoding dectection
 set fileencodings=utf-8,gb2312,gb18030,gbk,ucs-bom,cp936,latin1
@@ -25,14 +25,16 @@ filetype plugin indent on
 
 " enable syntax hightlight and completion 
 syntax enable
-syntax on
+" syntax on
 
 "highlight current line
 au WinLeave * set nocursorline nocursorcolumn
 au WinEnter * set cursorline cursorcolumn
 set cursorline cursorcolumn
 
+""""""""""""""""""""
 " search operations
+""""""""""""""""""""
 set incsearch
 set ignorecase
 set hlsearch                                                      " "hightlight search
@@ -46,7 +48,9 @@ autocmd BufReadPost *
     \     endif |
     \ endif
 
+""""""""""""""""""""
 " display settings
+""""""""""""""""""""
 set t_Co=256                                                      " Explicitly tell vim that the terminal has 256 colors "
 set mouse=a                                                       " use mouse in all modes
 set report=0                                                      " always report number of lines changed                "
@@ -81,7 +85,9 @@ set background=light
 colorscheme solarized
 
 
+""""""""""""""""""""
 " Python-mode
+""""""""""""""""""""
 "Enable all python highlights                          *'g:pymode_syntax_all'*
 let g:pymode_syntax_all = 1
 "Turn on pymode syntax                                        *'g:pymode_syntax'*
@@ -135,12 +141,17 @@ let g:pymode_trim_whitespaces = 1
 " ]M            Jump on next class or method (normal, visual, operator modes)
 "let g:pymode_rope = 1
 
+
 "config for gunco
+""""""""""""""""""""
 let g:gundo_width = 40
 let g:gundo_preview_height = 40
 let g:gundo_right = 1
 
+
+""""""""""""""""""""
 "keyboard binding 
+""""""""""""""""""""
 noremap <F1> <Esc>
 nmap <F2> :call CompileRunGcc()<cr>
 nmap <F5> :TagbarToggle<cr>
