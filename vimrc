@@ -104,7 +104,7 @@ let g:pymode_lint_unmodified = 1
 "Default code checkers (you could set several)         *'g:pymode_lint_checkers'*
 let g:pymode_lint_checkers = ['pep8', 'pyflakes']
 "Setup max line length                       *'g:pymode_options_max_line_length'*
-let g:pymode_options_max_line_length = 79
+let g:pymode_options_max_line_length = 100
 "Set PEP8 options                                  *'g:pymode_lint_options_pep8'*
 let g:pymode_lint_options_pep8 = ({'max_line_length': g:pymode_options_max_line_length})
 "Setup pymode |quickfix| window
