@@ -16,6 +16,8 @@ Plugin 'plasticboy/vim-markdown'
 "for Vim 7.3.598+, use YouCompleteMe, or you may choose jedi-vim
 Bundle 'Valloric/YouCompleteMe'
 "Bundle 'davidhalter/jedi-vim'
+"Bunle ervandew/supertab
+Bundle 'eiginn/netrw'
 
 " encoding dectection
 set fileencodings=utf-8,gb2312,gb18030,gbk,ucs-bom,cp936,latin1
