@@ -16,6 +16,8 @@ Plugin 'plasticboy/vim-markdown'
 "for Vim 7.3.598+, use YouCompleteMe, or you may choose jedi-vim
 Bundle 'Valloric/YouCompleteMe'
 "Bundle 'davidhalter/jedi-vim'
+"Bunle ervandew/supertab
+Bundle 'eiginn/netrw'
 
 " encoding dectection
 set fileencodings=utf-8,gb2312,gb18030,gbk,ucs-bom,cp936,latin1
@@ -188,6 +190,16 @@ let NERDTreeShowBookmarks=1
 let NERDTreeWinPos = "right"
 
 
+"""""""""""""""""""""""""""""""""""""""
+" config for netrwb
+"""""""""""""""""""""""""""""""""""""""
+let g:netrw_altv          = 1
+let g:netrw_fastbrowse    = 2
+let g:netrw_keepdir       = 0
+let g:netrw_liststyle     = 2
+let g:netrw_retmap        = 1
+let g:netrw_silent        = 1
+let g:netrw_special_syntax= 1
 """""""""""""""""""""""""""""""""""""""
 "auto complete file head
 """""""""""""""""""""""""""""""""""""""
