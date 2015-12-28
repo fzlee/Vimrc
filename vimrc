@@ -1,10 +1,10 @@
 "Bundle setting
 set nocompatible
 filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=~/.vim//bundle/Vundle.vim
 call vundle#rc()
 
-Bundle  'gmarik/Vundle.vim'
+Bundle 'gmarik/Vundle.vim'
 Bundle 'The-NERD-tree'
 Bundle 'Tagbar'
 Bundle 'Lokaltog/vim-powerline'
@@ -83,8 +83,9 @@ let g:rehash256 = 1
 let g:solarized_termcolors=256
 "set background=dark
 "colorscheme solarized
-set background=light
+" set background=light
 colorscheme solarized
+" colorscheme lucario
 
 
 """"""""""""""""""""

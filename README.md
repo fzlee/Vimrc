@@ -12,3 +12,8 @@ Vim configuration using vundle
 6. cd ~/.vim/bundle/YouCompleteMe, run ./install.sh, if vim version is below 7.3.598, you should use neoicomplete instead 
 7. to update plugin installed, use BundleUpdate
 8. to remove installed plugin , delete correspond bundle config, run BundleClean
+
+## To use neovim
+1. `mkdir -p ~/.config/nvim` to create a neovim config folder.
+2. `ln ~/.vim/vimrc ~/.config/nvim/init.vim` to create neovim config file.
+3. `ln ~/.vim/colors ~/.config/nvim/` to create color scheme folder.
