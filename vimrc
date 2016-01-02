@@ -11,13 +11,11 @@ Plugin 'Lokaltog/vim-powerline'
 "Plugin 'Townk/vim-autoclose'
 Plugin 'klen/python-mode'
 Plugin 'sjl/gundo.vim'
-Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 "for Vim 7.3.598+, use YouCompleteMe, or you may choose jedi-vim
 Plugin 'Valloric/YouCompleteMe'
 "Plugin 'davidhalter/jedi-vim'
-"Bunle ervandew/supertab
-Plugin 'eiginn/netrw'
+"Plugin ervandew/supertab
 Plugin 'tomasr/molokai' 
 
 " encoding dectection
