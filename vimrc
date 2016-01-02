@@ -145,7 +145,7 @@ let g:pymode_trim_whitespaces = 1
 "let g:pymode_rope = 1
 
 
-"config for gunco
+"config for gundo
 """"""""""""""""""""
 let g:gundo_width = 40
 let g:gundo_preview_height = 40
