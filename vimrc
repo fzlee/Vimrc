@@ -1,25 +1,27 @@
-"Bundle setting
+"Plugin setting
 set nocompatible
 filetype off
 set rtp+=~/.vim//bundle/Vundle.vim
-call vundle#rc()
+call vundle#begin()
 
-Bundle 'gmarik/Vundle.vim'
-Bundle 'The-NERD-tree'
-Bundle 'Tagbar'
-Bundle 'Lokaltog/vim-powerline'
-"Bundle 'Townk/vim-autoclose'
-Bundle 'klen/python-mode'
-Bundle 'sjl/gundo.vim'
+Plugin 'gmarik/Vundle.vim'
+Plugin 'The-NERD-tree'
+Plugin 'Tagbar'
+Plugin 'Lokaltog/vim-powerline'
+"Plugin 'Townk/vim-autoclose'
+Plugin 'klen/python-mode'
+Plugin 'sjl/gundo.vim'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 "for Vim 7.3.598+, use YouCompleteMe, or you may choose jedi-vim
-Bundle 'Valloric/YouCompleteMe'
-"Bundle 'davidhalter/jedi-vim'
+Plugin 'Valloric/YouCompleteMe'
+"Plugin 'davidhalter/jedi-vim'
 "Bunle ervandew/supertab
-Bundle 'eiginn/netrw'
+Plugin 'eiginn/netrw'
+Plugin 'tomasr/molokai' 
 
 " encoding dectection
+call vundle#end()   
 set fileencodings=utf-8,gb2312,gb18030,gbk,ucs-bom,cp936,latin1
 
 " enable filetype dectection and ft specific plugin/indent
@@ -78,14 +80,12 @@ set history=100
 set backspace=indent,eol,start                                    " More powerful backspacing
 "code highlight customize
 let g:rehash256 = 1
-"colorscheme molokai
+colorscheme molokai
 
-let g:solarized_termcolors=256
-"set background=dark
-"colorscheme solarized
+" let g:solarized_termcolors=256
 " set background=light
-colorscheme solarized
-" colorscheme lucario
+" colorscheme solarized
+" set background=light
 
 
 """"""""""""""""""""
@@ -269,5 +269,3 @@ func CompileRunGcc()
         :!./%
     endif
 endfunc
-
-
