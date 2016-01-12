@@ -119,10 +119,13 @@ let g:pymode_lint_options_pep8 = ({'max_line_length': g:pymode_options_max_line_
 let g:pymode_quickfix_minheight = 4
 let g:pymode_quickfix_maxheight = 4
 
+"turn off rope
+let g:pymode_rope = 0
 "Don't Place error |signs|                                             *'g:pymode_signs'*
 let g:pymode_lint_signs = 0
 "Turn off code completion support in the plugin       *'g:pymode_rope_completion'*
 let g:pymode_rope_completion = 0
+let g:pymode_rope_lookup_project = 0
 
 "Disable markdown folding
 let g:vim_markdown_folding_disabled=1
