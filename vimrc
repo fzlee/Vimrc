@@ -17,6 +17,7 @@ Plugin 'Valloric/YouCompleteMe'
 "Plugin 'davidhalter/jedi-vim'
 "Plugin ervandew/supertab
 Plugin 'tomasr/molokai' 
+Plugin 'alvan/vim-closetag'
 
 " encoding dectection
 call vundle#end()   
@@ -25,9 +26,12 @@ set fileencodings=utf-8,gb2312,gb18030,gbk,ucs-bom,cp936,latin1
 " enable filetype dectection and ft specific plugin/indent
 filetype plugin indent on
 
-" enable syntax hightlight and completion 
-syntax enable
 " syntax on
+syntax enable
+
+" for html files, 2 spaces
+autocmd Filetype html setlocal ts=2 sw=2 expandtab
+autocmd Filetype javascript setlocal ts=2 sw=2 expandtab
 
 "highlight current line
 au WinLeave * set nocursorline nocursorcolumn
@@ -78,7 +82,6 @@ set history=100
 set backspace=indent,eol,start                                    " More powerful backspacing
 "code highlight customize
 let g:rehash256 = 1
-colorscheme molokai
 
 " let g:solarized_termcolors=256
 " set background=light
@@ -86,6 +89,7 @@ colorscheme molokai
 " set background=light
 
 
+colorscheme molokai 
 """"""""""""""""""""
 " Python-mode
 """"""""""""""""""""
@@ -191,17 +195,8 @@ let NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$',  '\~$']
 let NERDTreeShowBookmarks=1
 let NERDTreeWinPos = "right"
 
-
-"""""""""""""""""""""""""""""""""""""""
-" config for netrwb
-"""""""""""""""""""""""""""""""""""""""
-let g:netrw_altv          = 1
-let g:netrw_fastbrowse    = 2
-let g:netrw_keepdir       = 0
-let g:netrw_liststyle     = 2
-let g:netrw_retmap        = 1
-let g:netrw_silent        = 1
-let g:netrw_special_syntax= 1
+" CloseTag  filenames like *.xml, *.html, *.xhtml, ...
+let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.xml"
 """""""""""""""""""""""""""""""""""""""
 "auto complete file head
 """""""""""""""""""""""""""""""""""""""
