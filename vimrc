@@ -18,6 +18,8 @@ Plugin 'Valloric/YouCompleteMe'
 "Plugin ervandew/supertab
 Plugin 'tomasr/molokai' 
 Plugin 'alvan/vim-closetag'
+Plugin 'scrooloose/syntastic'
+
 
 " encoding dectection
 call vundle#end()   
@@ -32,6 +34,8 @@ syntax enable
 " for html files, 2 spaces
 autocmd Filetype html setlocal ts=2 sw=2 expandtab
 autocmd Filetype javascript setlocal ts=2 sw=2 expandtab
+" avoid confliction between syntastic and python-mode
+autocmd FileType python let g:syntastic_check_on_wq = 0
 
 "highlight current line
 au WinLeave * set nocursorline nocursorcolumn
@@ -182,7 +186,7 @@ hi Tb_VisibleNormal ctermbg=252 ctermfg=235
 hi Tb_VisibleChanged guifg=green ctermbg=252 ctermfg=white
 let g:tagbar_left=1
 let g:tagbar_width=30
-let g:tagbar_autofocus = 1
+let g:tagbar_autofocus = 0
 let g:tagbar_sort = 0 
 let g:tagbar_compact = 1
 
