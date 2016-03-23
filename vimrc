@@ -92,8 +92,11 @@ let g:rehash256 = 1
 " colorscheme solarized
 " set background=light
 
-
 colorscheme molokai 
+
+" specify python path, so we don't have to install neovim  for each python virtualenv
+let g:python_host_prog = '/usr/local/bin/python'
+
 """"""""""""""""""""
 " Python-mode
 """"""""""""""""""""
@@ -198,6 +201,13 @@ let NERDTreeIgnore=['\.vim$', '\~$', '\.pyc$', '\.swp$']
 let NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$',  '\~$']
 let NERDTreeShowBookmarks=1
 let NERDTreeWinPos = "right"
+
+" bug fix for OSX iTerm2, mouse reporting issue
+if has('mouse_sgr')
+    set ttymouse=sgr
+endif
+
+
 
 " CloseTag  filenames like *.xml, *.html, *.xhtml, ...
 let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.xml"
