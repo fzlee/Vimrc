@@ -11,6 +11,7 @@ Plugin 'Lokaltog/vim-powerline'
 "Plugin 'Townk/vim-autoclose'
 Plugin 'klen/python-mode'
 Plugin 'sjl/gundo.vim'
+Plugin 'airblade/vim-gitgutter'
 Plugin 'plasticboy/vim-markdown'
 "for Vim 7.3.598+, use YouCompleteMe, or you may choose jedi-vim
 Plugin 'Valloric/YouCompleteMe'
@@ -228,15 +229,16 @@ func SetTitle()
                 call setline(7, "export PATH")    
         endif    
         if &filetype == 'python'  
-                call setline(1, "\#!/usr/bin/env python3")  
-                call setline(2, "\"\"\"")  
-                call setline(3, "    ".expand("%"))
-                call setline(4, "    ~~~~~~~~~~")
-                call setline(5, "")
-                call setline(6, "\"\"\"")  
-                call setline(7,"")  
-                call setline(8, "if __name__ == \"__main__\":")  
-                call setline(9, "    pass")  
+                call setline(1, "\#!/usr/bin/env python2")  
+                call setline(2, "\# coding: utf-8")  
+                call setline(3, "\"\"\"")  
+                call setline(4, "    ".expand("%"))
+                call setline(5, "    ~~~~~~~~~~")
+                call setline(6, "")
+                call setline(7, "\"\"\"")  
+                call setline(8,"")  
+                call setline(9, "if __name__ == \"__main__\":")  
+                call setline(10, "    pass")  
         endif  
         if &filetype == 'java'  
                 call setline(1, "//coding=utf8")  
