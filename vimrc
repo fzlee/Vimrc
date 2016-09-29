@@ -17,11 +17,10 @@ Plugin 'plasticboy/vim-markdown'
 Plugin 'Valloric/YouCompleteMe'
 "Plugin 'davidhalter/jedi-vim'
 "Plugin ervandew/supertab
-Plugin 'tomasr/molokai' 
+" Plugin 'tomasr/molokai' 
 Plugin 'alvan/vim-closetag'
-"Plugin 'scrooloose/syntastic'
-
-
+Plugin 'joshdick/onedark.vim'
+Plugin 'sheerun/vim-polyglot'
 " encoding dectection
 call vundle#end()   
 set fileencodings=utf-8,gb2312,gb18030,gbk,ucs-bom,cp936,latin1
@@ -92,8 +91,22 @@ let g:rehash256 = 1
 " set background=light
 " colorscheme solarized
 " set background=light
+" colorscheme molokai 
 
-colorscheme molokai 
+if (empty($TMUX))
+  if (has("nvim"))
+  "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
+  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+  endif
+  "For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
+  "Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
+  " < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
+  if (has("termguicolors"))
+    set termguicolors
+  endif
+endif
+set background=dark " for the light version
+colorscheme onedark
 
 " specify python path, so we don't have to install neovim  for each python virtualenv
 let g:python_host_prog = '/usr/local/bin/python'
