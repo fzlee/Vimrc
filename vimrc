@@ -7,6 +7,7 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'The-NERD-tree'
 Plugin 'Tagbar'
+
 Plugin 'Lokaltog/vim-powerline'
 "Plugin 'Townk/vim-autoclose'
 Plugin 'klen/python-mode'
@@ -15,9 +16,7 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'plasticboy/vim-markdown'
 "for Vim 7.3.598+, use YouCompleteMe, or you may choose jedi-vim
 Plugin 'Valloric/YouCompleteMe'
-"Plugin 'davidhalter/jedi-vim'
-"Plugin ervandew/supertab
-" Plugin 'tomasr/molokai' 
+Plugin 'artur-shaik/vim-javacomplete2'
 Plugin 'alvan/vim-closetag'
 Plugin 'joshdick/onedark.vim'
 Plugin 'sheerun/vim-polyglot'
@@ -202,14 +201,14 @@ hi Tb_Changed guifg=green ctermfg=green
 hi Tb_VisibleNormal ctermbg=252 ctermfg=235
 hi Tb_VisibleChanged guifg=green ctermbg=252 ctermfg=white
 let g:tagbar_left=1
-let g:tagbar_width=30
+let g:tagbar_width=20
 let g:tagbar_autofocus = 0
 let g:tagbar_sort = 0 
 let g:tagbar_compact = 1
 
 " Nerd Tree 
 let NERDChristmasTree=0
-let NERDTreeWinSize=25
+let NERDTreeWinSize=20
 let NERDTreeChDirMode=2
 let NERDTreeIgnore=['\.vim$', '\~$', '\.pyc$', '\.swp$']
 let NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$',  '\~$']
@@ -229,6 +228,7 @@ let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.xml"
 "auto complete file head
 """""""""""""""""""""""""""""""""""""""
 autocmd BufNewFile *.py,*.cc,*.sh,*.java,*.c,*.cpp exec ":call SetTitle()"        
+autocmd FileType java setlocal omnifunc=javacomplete#Complete
 "新建.py,.cc,.java,.sh,  
 ""定义函数SetTitle，自动插入文件头  
 func SetTitle()  
@@ -248,9 +248,6 @@ func SetTitle()
                 call setline(5, "    ~~~~~~~~~~")
                 call setline(6, "")
                 call setline(7, "\"\"\"")  
-                call setline(8,"")  
-                call setline(9, "if __name__ == \"__main__\":")  
-                call setline(10, "    pass")  
         endif  
         if &filetype == 'java'  
                 call setline(1, "//coding=utf8")  
