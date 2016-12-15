@@ -181,6 +181,8 @@ let g:gundo_right = 1
 "keyboard binding 
 """"""""""""""""""""
 noremap <F1> <Esc>
+" Disable Ex mode
+nnoremap Q <nop>
 nmap <F2> :call CompileRunGcc()<cr>
 nmap <F5> :TagbarToggle<cr>
 nmap <F6> :NERDTreeToggle<cr>
