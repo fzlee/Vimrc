@@ -7,21 +7,21 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'The-NERD-tree'
 Plugin 'Tagbar'
-
 Plugin 'Lokaltog/vim-powerline'
-"Plugin 'Townk/vim-autoclose'
+Plugin 'jiangmiao/auto-pairs'
 Plugin 'klen/python-mode'
 Plugin 'sjl/gundo.vim'
 Plugin 'airblade/vim-gitgutter'
-Plugin 'plasticboy/vim-markdown'
-"for Vim 7.3.598+, use YouCompleteMe, or you may choose jedi-vim
 Plugin 'Valloric/YouCompleteMe'
-Plugin 'artur-shaik/vim-javacomplete2'
-Plugin 'alvan/vim-closetag'
 Plugin 'joshdick/onedark.vim'
 Plugin 'sheerun/vim-polyglot'
 " encoding dectection
 call vundle#end()   
+
+" compability configuration for vim and neovim
+let $NVIM_TUI_ENABLE_CURSOR_SHAPE=0
+
+" file encoding
 set fileencodings=utf-8,gb2312,gb18030,gbk,ucs-bom,cp936,latin1
 
 " enable filetype dectection and ft specific plugin/indent
@@ -60,7 +60,7 @@ autocmd BufReadPost *
 """"""""""""""""""""
 " display settings
 """"""""""""""""""""
-set t_Co=256                                                      " Explicitly tell vim that the terminal has 256 colors "
+set termguicolors
 set mouse=a                                                       " use mouse in all modes
 set report=0                                                      " always report number of lines changed                "
 set nowrap                                                        " dont wrap lines
@@ -83,32 +83,14 @@ set shiftwidth=4
 set confirm                                                       " prompt when existing from an unsaved file
 set history=100
 set backspace=indent,eol,start                                    " More powerful backspacing
-"code highlight customize
-let g:rehash256 = 1
 
-" let g:solarized_termcolors=256
-" set background=light
-" colorscheme solarized
-" set background=light
-" colorscheme molokai 
-
-if (empty($TMUX))
-  if (has("nvim"))
-  "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
-  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-  endif
-  "For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
-  "Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
-  " < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
-  if (has("termguicolors"))
-    set termguicolors
-  endif
-endif
+" color scheme
 set background=dark " for the light version
 colorscheme onedark
 
 " specify python path, so we don't have to install neovim  for each python virtualenv
-let g:python_host_prog = '/usr/local/bin/python'
+" let g:python_host_prog = '~/.virtualenvs/neovim/bin/python'
+let g:python_host_prog = expand('~/.virtualenvs/neovim/bin/python')
 
 """"""""""""""""""""
 " Python-mode
@@ -223,9 +205,6 @@ if has('mouse_sgr')
 endif
 
 
-
-" CloseTag  filenames like *.xml, *.html, *.xhtml, ...
-let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.xml"
 """""""""""""""""""""""""""""""""""""""
 "auto complete file head
 """""""""""""""""""""""""""""""""""""""
