@@ -1,3 +1,4 @@
+"
 "Plugin setting
 set nocompatible
 filetype off
@@ -5,21 +6,23 @@ set rtp+=~/.vim//bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
-Plugin 'The-NERD-tree'
-Plugin 'Tagbar'
+Plugin 'scrooloose/nerdtree'
+Plugin 'majutsushi/tagbar'
 Plugin 'Lokaltog/vim-powerline'
 Plugin 'jiangmiao/auto-pairs'
-Plugin 'klen/python-mode'
-Plugin 'sjl/gundo.vim'
 Plugin 'airblade/vim-gitgutter'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'joshdick/onedark.vim'
 Plugin 'sheerun/vim-polyglot'
+Plugin 'rakr/vim-one'
+Plugin 'kelwin/vim-smali'
+Plugin 'decrement/logos.vim'
+Plugin 'klen/python-mode'
+Plugin 'Valloric/YouCompleteMe'
+
 " encoding dectection
 call vundle#end()   
 
 " compability configuration for vim and neovim
-let $NVIM_TUI_ENABLE_CURSOR_SHAPE=0
+set guicursor=
 
 " file encoding
 set fileencodings=utf-8,gb2312,gb18030,gbk,ucs-bom,cp936,latin1
@@ -33,6 +36,7 @@ syntax enable
 " for html files, 2 spaces
 autocmd Filetype html setlocal ts=2 sw=2 expandtab
 autocmd Filetype javascript setlocal ts=2 sw=2 expandtab
+autocmd Filetype css setlocal ts=2 sw=2 expandtab
 " avoid confliction between syntastic and python-mode
 autocmd FileType python let g:syntastic_check_on_wq = 0
 
@@ -60,7 +64,11 @@ autocmd BufReadPost *
 """"""""""""""""""""
 " display settings
 """"""""""""""""""""
-set termguicolors
+if has('termguicolors')
+    set termguicolors
+else
+endif
+
 set mouse=a                                                       " use mouse in all modes
 set report=0                                                      " always report number of lines changed                "
 set nowrap                                                        " dont wrap lines
@@ -84,9 +92,9 @@ set confirm                                                       " prompt when 
 set history=100
 set backspace=indent,eol,start                                    " More powerful backspacing
 
-" color scheme
+"color scheme for one dark light
 set background=dark " for the light version
-colorscheme onedark
+colorscheme one
 
 " specify python path, so we don't have to install neovim  for each python virtualenv
 " let g:python_host_prog = '~/.virtualenvs/neovim/bin/python'
@@ -95,6 +103,8 @@ let g:python_host_prog = expand('~/.virtualenvs/neovim/bin/python')
 """"""""""""""""""""
 " Python-mode
 """"""""""""""""""""
+"Python3 support
+let pymode_python = 'python3'
 "Enable all python highlights                          *'g:pymode_syntax_all'*
 let g:pymode_syntax_all = 1
 "Turn on pymode syntax                                        *'g:pymode_syntax'*
@@ -189,6 +199,9 @@ let g:tagbar_width=20
 let g:tagbar_autofocus = 0
 let g:tagbar_sort = 0 
 let g:tagbar_compact = 1
+
+" support for smali
+let g:tagbar_type_smali = {'ctagstype' : 'smali', 'kinds' : ['f:field', 'm:method',]}
 
 " Nerd Tree 
 let NERDChristmasTree=0
