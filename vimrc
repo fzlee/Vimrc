@@ -1,25 +1,21 @@
-"
 "Plugin setting
 set nocompatible
-filetype off
-set rtp+=~/.vim//bundle/Vundle.vim
-call vundle#begin()
-
-Plugin 'gmarik/Vundle.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'majutsushi/tagbar'
-Plugin 'Lokaltog/vim-powerline'
-Plugin 'jiangmiao/auto-pairs'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'sheerun/vim-polyglot'
-Plugin 'rakr/vim-one'
-Plugin 'kelwin/vim-smali'
-Plugin 'decrement/logos.vim'
-Plugin 'klen/python-mode'
-Plugin 'Valloric/YouCompleteMe'
-
-" encoding dectection
-call vundle#end()   
+" vim-plug
+call plug#begin('~/.vim/plugged')
+" general plugins
+Plug 'scrooloose/nerdtree'
+Plug 'majutsushi/tagbar'
+Plug 'Lokaltog/vim-powerline'
+Plug 'jiangmiao/auto-pairs'
+Plug 'airblade/vim-gitgutter'
+Plug 'sheerun/vim-polyglot'
+Plug 'rakr/vim-one'
+Plug 'kelwin/vim-smali'
+Plug 'decrement/logos.vim'
+Plug 'rafi/awesome-vim-colorschemes'
+Plug 'klen/python-mode'
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+call plug#end()
 
 " compability configuration for vim and neovim
 set guicursor=
@@ -39,6 +35,11 @@ autocmd Filetype javascript setlocal ts=2 sw=2 expandtab
 autocmd Filetype css setlocal ts=2 sw=2 expandtab
 " avoid confliction between syntastic and python-mode
 autocmd FileType python let g:syntastic_check_on_wq = 0
+
+if has('termguicolors')
+    set termguicolors
+else
+endif
 
 "highlight current line
 au WinLeave * set nocursorline nocursorcolumn
@@ -64,11 +65,6 @@ autocmd BufReadPost *
 """"""""""""""""""""
 " display settings
 """"""""""""""""""""
-if has('termguicolors')
-    set termguicolors
-else
-endif
-
 set mouse=a                                                       " use mouse in all modes
 set report=0                                                      " always report number of lines changed                "
 set nowrap                                                        " dont wrap lines
@@ -93,18 +89,33 @@ set history=100
 set backspace=indent,eol,start                                    " More powerful backspacing
 
 "color scheme for one dark light
-set background=dark " for the light version
+if (empty($TMUX))
+  if (has("nvim"))
+  "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
+  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+  endif
+  "For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
+  "Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
+  " < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
+  if (has("termguicolors"))
+    set termguicolors
+  endif
+endif
+
+
+set background=dark
+let g:airline_theme='one'
 colorscheme one
 
 " specify python path, so we don't have to install neovim  for each python virtualenv
 " let g:python_host_prog = '~/.virtualenvs/neovim/bin/python'
-let g:python_host_prog = expand('~/.virtualenvs/neovim/bin/python')
+let g:python_host_prog = '/usr/local/bin/python'
+let g:python3_host_prog = '/usr/local/bin/python3'
 
 """"""""""""""""""""
 " Python-mode
 """"""""""""""""""""
-"Python3 support
-let pymode_python = 'python3'
+let g:pymode_python = 'python3'
 "Enable all python highlights                          *'g:pymode_syntax_all'*
 let g:pymode_syntax_all = 1
 "Turn on pymode syntax                                        *'g:pymode_syntax'*
@@ -179,7 +190,7 @@ nmap <F2> :call CompileRunGcc()<cr>
 nmap <F5> :TagbarToggle<cr>
 nmap <F6> :NERDTreeToggle<cr>
 nmap <F7> :PymodeLintAuto<cr>
-nmap <F8> :GundoToggle<CR>
+nmap <F8> :GundoToggle<cr>
 :command W w
 :command WQ wq
 :command Wq wq
