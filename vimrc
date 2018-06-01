@@ -13,7 +13,7 @@ Plug 'rakr/vim-one'
 Plug 'kelwin/vim-smali'
 Plug 'decrement/logos.vim'
 Plug 'rafi/awesome-vim-colorschemes'
-Plug 'klen/python-mode'
+Plug 'python-mode/python-mode', {'branch': 'develop'}
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 call plug#end()
 
