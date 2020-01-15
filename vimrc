@@ -10,11 +10,9 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'airblade/vim-gitgutter'
 Plug 'sheerun/vim-polyglot'
 Plug 'rakr/vim-one'
-Plug 'kelwin/vim-smali'
-Plug 'decrement/logos.vim'
 Plug 'rafi/awesome-vim-colorschemes'
-Plug 'python-mode/python-mode', {'branch': 'develop'}
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 " compability configuration for vim and neovim
@@ -109,8 +107,31 @@ colorscheme one
 
 " specify python path, so we don't have to install neovim  for each python virtualenv
 " let g:python_host_prog = '~/.virtualenvs/neovim/bin/python'
-let g:python_host_prog = '/usr/local/bin/python'
-let g:python3_host_prog = '/usr/local/bin/python3'
+" let g:python_host_prog = '/usr/local/bin/python'
+let g:python3_host_prog = '/Users/fzlee/.pyenv/versions/neovim/bin/python'
+let g:ycm_path_to_python_interpreter = '/Users/fzlee/.pyenv/versions/neovim/bin/python'
+
+
+""""""""
+"config for coc
+""""""""
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+
+call coc#config('python', {
+  \   'jediEnabled': v:false,
+  \   'pythonPath': split(execute('!which python'), '\n')[-1]
+  \ })
+
 
 """"""""""""""""""""
 " Python-mode
@@ -228,6 +249,34 @@ if has('mouse_sgr')
     set ttymouse=sgr
 endif
 
+" config for go ctags
+let g:tagbar_type_go = {
+	\ 'ctagstype' : 'go',
+	\ 'kinds'     : [
+		\ 'p:package',
+		\ 'i:imports:1',
+		\ 'c:constants',
+		\ 'v:variables',
+		\ 't:types',
+		\ 'n:interfaces',
+		\ 'w:fields',
+		\ 'e:embedded',
+		\ 'm:methods',
+		\ 'r:constructor',
+		\ 'f:functions'
+	\ ],
+	\ 'sro' : '.',
+	\ 'kind2scope' : {
+		\ 't' : 'ctype',
+		\ 'n' : 'ntype'
+	\ },
+	\ 'scope2kind' : {
+		\ 'ctype' : 't',
+		\ 'ntype' : 'n'
+	\ },
+	\ 'ctagsbin'  : 'gotags',
+	\ 'ctagsargs' : '-sort -silent'
+    \ }
 
 """""""""""""""""""""""""""""""""""""""
 "auto complete file head
@@ -246,13 +295,11 @@ func SetTitle()
                 call setline(6, "export PATH")    
         endif    
         if &filetype == 'python'  
-                call setline(1, "\#!/usr/bin/env python")  
-                call setline(2, "\# coding: utf-8")  
-                call setline(3, "\"\"\"")  
-                call setline(4, "    ".expand("%"))
-                call setline(5, "    ~~~~~~~~~~")
-                call setline(6, "")
-                call setline(7, "\"\"\"")  
+                call setline(1, "\"\"\"")  
+                call setline(2, "    ".expand("%"))
+                call setline(3, "    ~~~~~~~~~~")
+                call setline(4, "")
+                call setline(5, "\"\"\"")  
         endif  
         if &filetype == 'java'  
                 call setline(1, "//coding=utf8")  

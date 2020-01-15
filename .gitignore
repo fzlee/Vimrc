@@ -3,3 +3,4 @@ plugged/*
 *.swp
 init.vim
 .netrwhist
+coc-settings.json
