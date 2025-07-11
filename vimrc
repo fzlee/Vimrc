@@ -5,7 +5,7 @@ call plug#begin('~/.vim/plugged')
 " general plugins
 Plug 'scrooloose/nerdtree'
 Plug 'majutsushi/tagbar'
-Plug 'Lokaltog/vim-powerline'
+Plug 'vim-airline/vim-airline'
 Plug 'jiangmiao/auto-pairs'
 Plug 'airblade/vim-gitgutter'
 Plug 'rakr/vim-one'
@@ -79,6 +79,8 @@ set softtabstop=4
 set shiftwidth=4
 set expandtab
 set shiftwidth=4
+set lazyredraw
+set ttyfast
 
 "set nofoldenable                                                 " disable folding
 set confirm                                                       " prompt when existing from an unsaved file
@@ -247,68 +249,6 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
-
-
-""""""""""""""""""""
-" Python-mode
-""""""""""""""""""""
-let g:pymode_python = 'python3'
-"Enable all python highlights                          *'g:pymode_syntax_all'*
-let g:pymode_syntax_all = 1
-"Turn on pymode syntax                                        *'g:pymode_syntax'*
-let g:pymode_syntax = 1
-"Enable automatic virtualenv detection                     *'g:pymode_virtualenv'*
-let g:pymode_virtualenv = 1
-"Enable pymode folding                                       *'g:pymode_folding'*
-let g:pymode_folding = 0
-"Turns on the documentation script                               *'g:pymode_doc'*
-let g:pymode_doc = 0
-"Turn on code checking                                          *'g:pymode_lint'*
-let g:pymode_lint = 1
-"Check code on every save (if file has been modified)  *'g:pymode_lint_on_write'*
-"let g:pymode_lint_on_write = 1
-"Show error message if cursor placed at the error line  *'g:pymode_lint_message'*
-let g:pymode_lint_message = 1
-"Check code when editing (on the fly)                        *'g:pymode_lint_on_fly'*
-"let g:pymode_lint_on_fly = 1
-"Check code on every save (every)                    *'g:pymode_lint_unmodified'*
-let g:pymode_lint_unmodified = 1
-"Default code checkers (you could set several)         *'g:pymode_lint_checkers'*
-let g:pymode_lint_checkers = ['pep8', 'pyflakes']
-"Setup max line length                       *'g:pymode_options_max_line_length'*
-let g:pymode_options_max_line_length = 100
-"Set PEP8 options                                  *'g:pymode_lint_options_pep8'*
-let g:pymode_lint_options_pep8 = ({'max_line_length': g:pymode_options_max_line_length})
-"Setup pymode |quickfix| window
-let g:pymode_quickfix_minheight = 4
-let g:pymode_quickfix_maxheight = 4
-
-"turn off rope
-let g:pymode_rope = 0
-"Don't Place error |signs|                                             *'g:pymode_signs'*
-let g:pymode_lint_signs = 0
-"Turn off code completion support in the plugin       *'g:pymode_rope_completion'*
-let g:pymode_rope_completion = 0
-let g:pymode_rope_lookup_project = 0
-
-"Disable markdown folding
-let g:vim_markdown_folding_disabled=1
-"Trim unused white spaces on save                   *'g:pymode_trim_whitespaces'*
-let g:pymode_trim_whitespaces = 1
-" Activate rope
-" Keys:
-" K             Show python docs
-" <Ctrl-Space>  Rope autocomplete
-" <Ctrl-c>g     Rope goto definition
-" <Ctrl-c>d     Rope show documentation
-" <Ctrl-c>f     Rope find occurrences
-" <Leader>b     Set, unset breakpoint (g:pymode_breakpoint enabled)
-" [[            Jump on previous class or function (normal, visual, operator modes)
-" ]]            Jump on next class or function (normal, visual, operator modes)
-" [M            Jump on previous class or method (normal, visual, operator modes)
-" ]M            Jump on next class or method (normal, visual, operator modes)
-"let g:pymode_rope = 1
-
 
 "config for gundo
 """"""""""""""""""""
