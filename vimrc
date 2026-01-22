@@ -1,9 +1,13 @@
 "Plugin setting
 set nocompatible
+
+" Set leader key
+let mapleader = " "
+let maplocalleader = " "
 " vim-plug
 call plug#begin('~/.vim/plugged')
 " general plugins
-Plug 'scrooloose/nerdtree'
+Plug 'preservim/nerdtree'
 Plug 'majutsushi/tagbar'
 Plug 'vim-airline/vim-airline'
 Plug 'jiangmiao/auto-pairs'
@@ -12,6 +16,10 @@ Plug 'rakr/vim-one'
 Plug 'rafi/awesome-vim-colorschemes'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'sjl/gundo.vim'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
+Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 
 " compability configuration for vim and neovim
@@ -35,7 +43,10 @@ autocmd FileType python let g:syntastic_check_on_wq = 0
 
 if has('termguicolors')
     set termguicolors
-else
+endif
+
+if &term == 'xterm-kitty'
+    let &t_ut=''
 endif
 
 "highlight current line
@@ -67,6 +78,7 @@ set report=0                                                      " always repor
 set nowrap                                                        " dont wrap lines
 set scrolloff=2                                                   " 2 lines above/below cursor when scrolling
 set number                                                        " show line numbers
+set relativenumber                                                " show relative line numbers
 set showmatch                                                     " show matching bracket (briefly jump)
 set showcmd                                                       " show typed command in status bar
 set title                                                         " show file in titlebar
@@ -78,7 +90,6 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set expandtab
-set shiftwidth=4
 set lazyredraw
 set ttyfast
 
@@ -86,21 +97,23 @@ set ttyfast
 set confirm                                                       " prompt when existing from an unsaved file
 set history=100
 set backspace=indent,eol,start                                    " More powerful backspacing
+set hidden                                                        " allow switching buffers without saving
+set updatetime=300                                                " faster update time for CoC
+set wildmenu                                                      " enhanced command line completion
+set wildmode=longest:full,full                                    " command line completion mode
+set clipboard=unnamed                                             " use system clipboard
 
-"color scheme for one dark light
-if (empty($TMUX))
-  if (has("nvim"))
-  "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
-  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-  endif
-  "For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
-  "Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
-  " < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
-  if (has("termguicolors"))
-    set termguicolors
-  endif
+" Persistent undo
+if has('persistent_undo')
+    set undofile
+    set undodir=~/.vim/undodir
+    if !isdirectory(&undodir)
+        call mkdir(&undodir, 'p', 0700)
+    endif
 endif
 
+" Better search experience
+set inccommand=nosplit                                            " live preview of substitutions (neovim only)
 
 set background=light
 let g:airline_theme='one'
@@ -335,12 +348,11 @@ let g:tagbar_type_go = {
     \ }
 
 """""""""""""""""""""""""""""""""""""""
-"auto complete file head
+" auto insert file header for new files
 """""""""""""""""""""""""""""""""""""""
-autocmd BufNewFile *.py,*.cc,*.sh,*.java,*.c,*.cpp exec ":call SetTitle()"        
+autocmd BufNewFile *.py,*.cc,*.sh,*.java,*.c,*.cpp exec ":call SetTitle()"
 autocmd FileType java setlocal omnifunc=javacomplete#Complete
-"新建.py,.cc,.java,.sh,  
-""定义函数SetTitle，自动插入文件头  
+" Define SetTitle function to auto insert file header  
 func SetTitle()  
         if &filetype == 'sh'  
                 call setline(1, "#!/bin/bash")  
@@ -381,15 +393,15 @@ endfunc
 func CompileRunGcc()
     exec "w"
     if &filetype == 'python'
-	exec "!python %"
+        exec "!python3 %"
     elseif &filetype == 'c'
-        exec "!g++ % -o %<.out"
+        exec "!gcc % -o %<.out"
         exec "! ./%<.out"
     elseif &filetype == 'cpp'
         exec "!g++ % -o %<.out"
         exec "! ./%<.out"
-    elseif &filetype == 'java' 
-        exec "!javac %" 
+    elseif &filetype == 'java'
+        exec "!javac %"
         exec "!java %<"
     elseif &filetype == 'sh'
         :!./%
