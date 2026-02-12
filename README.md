@@ -14,9 +14,3 @@ NeoVIM/Vim configuration with vundle
 ## Additional steps for NeoVIM
 1. `ln ~/.vim/ ~/.config/nvim` to create neovim configuration folder 
 2. `ln ~/.vim/vimrc ~/.vim/init.vim` to create a neovim configuration file.
-
-## configuration for YouCompleteMe
-1. `python_host_prog` is set to `~/.virtualenvs/neovim/bin/python`, you must have a virtualenv called neovim there.
-2. if you are using neovim , `pip install neovim`.
-3. install tools needed to build YoucompleteMe: `apt-get install ctags, cmake, python-dev, build-essential`.
-4. cd ~/.vim/bundle/YouCompleteMe, run `python ./install.py`.
