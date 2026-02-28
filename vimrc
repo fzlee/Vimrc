@@ -71,7 +71,7 @@ set report=0                                                      " always repor
 set nowrap                                                        " dont wrap lines
 set scrolloff=2                                                   " 2 lines above/below cursor when scrolling
 set number                                                        " show line numbers
-set relativenumber                                                " show relative line numbers
+set norelativenumber                                              " show absolute line numbers
 set showmatch                                                     " show matching bracket (briefly jump)
 set showcmd                                                       " show typed command in status bar
 set title                                                         " show file in titlebar
