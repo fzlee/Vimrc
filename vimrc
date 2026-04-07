@@ -96,7 +96,7 @@ set wildmode=longest:full,full                                    " command line
 set clipboard=unnamed                                             " use system clipboard
 set background=light
 let g:airline_theme='one'
-colorscheme one
+colorscheme sonokai
 
 
 """"""""""""""""""""
