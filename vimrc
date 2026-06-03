@@ -67,7 +67,7 @@ autocmd BufReadPost *
 " display settings
 """"""""""""""""""""
 set mouse=a                                                       " use mouse in all modes
-set report=0                                                      " always report number of lines changed                "
+set report=0                                                      " always report number of lines changed
 set nowrap                                                        " dont wrap lines
 set scrolloff=2                                                   " 2 lines above/below cursor when scrolling
 set number                                                        " show line numbers
@@ -76,7 +76,7 @@ set showmatch                                                     " show matchin
 set showcmd                                                       " show typed command in status bar
 set title                                                         " show file in titlebar
 set laststatus=2                                                  " use 2 lines for the status bar
-set matchtime=1                                                   " show matching bracket for 0.2 seconds
+set matchtime=1                                                   " show matching bracket for 0.1 seconds
 set matchpairs+=<:>                                               " specially for html
 set showmode                                                      " show mode in status bar (insert/replace/...)
 set tabstop=4
@@ -93,8 +93,6 @@ set backspace=indent,eol,start                                    " More powerfu
 set hidden                                                        " allow switching buffers without saving
 set wildmenu                                                      " enhanced command line completion
 set wildmode=longest:full,full                                    " command line completion mode
-set clipboard=unnamed                                             " use system clipboard
-set background=light
 let g:airline_theme='one'
 colorscheme sonokai
 
@@ -114,20 +112,39 @@ nmap <F6> :NERDTreeToggle<cr>
 :command Qa qa
 :command QA qa
 
-" tabbar
-let g:Tb_MaxSize = 2
-let g:Tb_TabWrap = 1
-hi Tb_Normal guifg=white ctermfg=white
-hi Tb_Changed guifg=green ctermfg=green
-hi Tb_VisibleNormal ctermbg=252 ctermfg=235
-hi Tb_VisibleChanged guifg=green ctermbg=252 ctermfg=white
+" tagbar
 let g:tagbar_left=1
 let g:tagbar_width=20
 let g:tagbar_autofocus = 0
 let g:tagbar_sort = 0 
 let g:tagbar_compact = 1
 
-" Nerd Tree 
+""""""""""""""""""""
+" LSP (vim-lsp)
+""""""""""""""""""""
+function! s:on_lsp_buffer_enabled() abort
+    setlocal omnifunc=lsp#complete
+    setlocal signcolumn=yes
+    nmap <buffer> gd <plug>(lsp-definition)
+    nmap <buffer> gr <plug>(lsp-references)
+    nmap <buffer> gi <plug>(lsp-implementation)
+    nmap <buffer> gt <plug>(lsp-type-definition)
+    nmap <buffer> K  <plug>(lsp-hover)
+    nmap <buffer> <leader>rn <plug>(lsp-rename)
+    nmap <buffer> [g <plug>(lsp-previous-diagnostic)
+    nmap <buffer> ]g <plug>(lsp-next-diagnostic)
+endfunction
+augroup lsp_install
+    au!
+    autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+augroup END
+" Tab / S-Tab to navigate the completion popup
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+" Enter selects the highlighted completion item (does not insert a newline)
+inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
+
+" Nerd Tree
 let NERDChristmasTree=0
 let NERDTreeWinSize=20
 let NERDTreeChDirMode=2
